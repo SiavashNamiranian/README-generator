@@ -1,13 +1,65 @@
 // TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+    {message: "What is your project title\n", name:"#", type:"input"},
+    {message: "Where are you located", name:"##", type:"input"},
+    {message: "Where are you ", name:"###", type:"input"},
+    {message: "Where are ", name:"####", type:"input"},
+    // {question: "Description\nprovide a short description explaining the what, why, and how of your project. Use the following questions as a guide:\n-what was your motivation?", title:"##"}
+];
+
+
+
+
+    
+  async function askQuestion() {
+  
+    for(const question of questions) {
+     await inquirer
+      .prompt([
+
+  
+      
+         {
+          type: question.type,
+          message: question.message,
+          name: question.name,
+         },
+     
+     ])
+     
+     .then((answer) => {
+      var answer = JSON.stringify(answer)+"\n";
+       fs.appendFile('README.md', answer.replace(/['":{}]+/g,'') , (err) =>
+       err ? console.log(err) : console.log('Successful')
+      )})
+      
+   }
+   
+  };
+
+askQuestion();
+//  }       
+
+  //   )))
+
+
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+//function writeToFile(fileName, data) {}
+
+
+
 
 // TODO: Create a function to initialize app
-function init() {}
+
+
+// function init() {}
 
 // Function call to initialize app
-init();
+
+
+// init();
