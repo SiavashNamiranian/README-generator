@@ -4,11 +4,8 @@ const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [
-    {message: "What is your project title\n", name:"#", type:"input"},
-    {message: "Where are you located", name:"##", type:"input"},
-    {message: "Where are you ", name:"###", type:"input"},
-    {message: "Where are ", name:"####", type:"input"},
-    // {question: "Description\nprovide a short description explaining the what, why, and how of your project. Use the following questions as a guide:\n-what was your motivation?", title:"##"}
+    {message: "What is your project title\n", name:"# ", type:"input"},
+    {message: "Description\nprovide a short description explaining the what, why, and how of your project. Use the following questions as a guide:\n-what was your motivation?", name:"## Description\n", type:'input'}
 ];
 
 
@@ -33,7 +30,7 @@ const questions = [
      
      .then((answer) => {
       var answer = JSON.stringify(answer)+"\n";
-       fs.appendFile('README.md', answer.replace(/['":{}]+/g,'') , (err) =>
+       fs.appendFile('README.md', answer.replace(/['":{}]+/g,'')+"\n" , (err) =>
        err ? console.log(err) : console.log('Successful')
       )})
       
